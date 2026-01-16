@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# DevArena
+ **Website:** https://dev-arena-nine.vercel.app/  
+**Backend Repository:** https://github.com/Masaru124/Hackathon-backend.git
 
-First, run the development server:
+DevArena is a curated platform for discovering hackathons in one place.  
+It helps students and developers quickly find upcoming hackathons without jumping across multiple websites.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The goal of DevArena is to keep hackathon discovery **simple, clean, and accessible**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What DevArena Does
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+DevArena brings together hackathons from different platforms and presents them in a single, easy-to-browse interface. Users can explore opportunities, filter them based on how they want to participate, and directly access the official hackathon pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Centralized list of upcoming hackathons  
+- Online and offline participation filters  
+- Clean, distraction-free interface  
+- Mobile-friendly pagination  
+- Direct links to official hackathon pages  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Why DevArena Exists
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Finding hackathons often means checking multiple platforms, scrolling through cluttered pages, or missing opportunities due to poor discovery. DevArena was created to solve this by offering a focused space where builders can quickly see what’s available and decide where to invest their time and effort.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## Who It’s For
+
+DevArena is built for:
+
+- Students exploring hackathons for learning and experience  
+- Developers looking to build and compete regularly  
+- First-time participants searching for beginner-friendly events  
+- Builders who value clarity and speed over noise  
+
+
+
+## Vision
+
+DevArena aims to grow into a reliable hub for hackathon discovery, helping builders spend less time searching and more time building.

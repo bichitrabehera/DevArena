@@ -13,8 +13,21 @@ import {
 import HackathonCard from "@/components/HackathonCard";
 const ITEMS_PER_PAGE = 6;
 
+type Hackathon = {
+  id: number;
+  name: string;
+  location?: string;
+  prize?: string;
+  participants?: string;
+  start_date?: string | null;
+  end_date?: string | null;
+  platform?: string;
+  link?: string;
+};
+
+
 const HackathonsList = () => {
-  const [hackathons, setHackathons] = useState([]);
+const [hackathons, setHackathons] = useState<Hackathon[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [mode, setMode] = useState("all");
@@ -26,7 +39,7 @@ const HackathonsList = () => {
     const fetchList = async () => {
       try {
         const res = await fetch(
-          "https://hackathon-backend-3stq.onrender.com/hackathons"
+          "/api/hackathons"
         );
 
         if (!res.ok) throw new Error("Failed to fetch");

@@ -1,4 +1,5 @@
 "use client";
+import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -27,6 +28,13 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            <a
+              href="https://github.com/bichitrabehera/DevArena.git"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon className="h-5 w-5 text-gray-700 hover:text-blue-600 transition" />
+            </a>
           </nav>
         </div>
       </div>

@@ -4,38 +4,16 @@ import styled from 'styled-components';
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="gearbox">
-        <div className="overlay" />
-        <div className="gear one">
-          <div className="gear-inner">
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
+      <div>
+        <div className="loader">
+          <span><span /><span /><span /><span /></span>
+          <div className="base">
+            <span />
+            <div className="face" />
           </div>
         </div>
-        <div className="gear two">
-          <div className="gear-inner">
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-          </div>
-        </div>
-        <div className="gear three">
-          <div className="gear-inner">
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-          </div>
-        </div>
-        <div className="gear four large">
-          <div className="gear-inner">
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-            <div className="bar" />
-          </div>
+        <div className="longfazers">
+          <span /><span /><span /><span />
         </div>
       </div>
     </StyledWrapper>
@@ -43,177 +21,233 @@ const Loader = () => {
 }
 
 const StyledWrapper = styled.div`
-  @keyframes clockwise {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes counter-clockwise {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(-360deg);
-    }
-  }
-
-  .gearbox {
-    background: #111;
-    height: 150px;
-    width: 200px;
-    position: relative;
-    border: none;
-    overflow: hidden;
-    border-radius: 6px;
-    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
-  }
-
-  .gearbox .overlay {
-    border-radius: 6px;
-    content: "";
+  .loader {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    box-shadow: inset 0px 0px 20px black;
-    transition: background 0.2s;
+    top: 50%;
+    margin-left: -50px;
+    left: 50%;
+    animation: speeder 0.4s linear infinite;
   }
-
-  .gearbox .overlay {
-    background: transparent;
-  }
-
-  .gear {
+  .loader > span {
+    height: 5px;
+    width: 35px;
+    background: #000;
     position: absolute;
-    height: 60px;
-    width: 60px;
-    box-shadow: 0px -1px 0px 0px #888888, 0px 1px 0px 0px black;
-    border-radius: 30px;
-  }
-
-  .gear.large {
-    height: 120px;
-    width: 120px;
-    border-radius: 60px;
-  }
-
-  .gear.large:after {
-    height: 96px;
-    width: 96px;
-    border-radius: 48px;
-    margin-left: -48px;
-    margin-top: -48px;
-  }
-
-  .gear.one {
-    top: 12px;
-    left: 10px;
-  }
-
-  .gear.two {
-    top: 61px;
+    top: -19px;
     left: 60px;
+    border-radius: 2px 10px 1px 0;
   }
-
-  .gear.three {
-    top: 110px;
-    left: 10px;
+  .base span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-right: 100px solid #000;
+    border-bottom: 6px solid transparent;
   }
-
-  .gear.four {
-    top: 13px;
-    left: 128px;
+  .base span:before {
+    content: "";
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: #000;
+    position: absolute;
+    right: -110px;
+    top: -16px;
   }
-
-  .gear:after {
+  .base span:after {
     content: "";
     position: absolute;
-    height: 36px;
-    width: 36px;
-    border-radius: 36px;
-    background: #111;
-    top: 50%;
-    left: 50%;
-    margin-left: -18px;
-    margin-top: -18px;
-    z-index: 3;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0, 0, 0, 0.1), inset 0px 2px 0px 0px #090909, inset 0px -1px 0px 0px #888888;
+    width: 0;
+    height: 0;
+    border-top: 0 solid transparent;
+    border-right: 55px solid #000;
+    border-bottom: 16px solid transparent;
+    top: -16px;
+    right: -98px;
   }
-
-  .gear-inner {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background: #555;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .large .gear-inner {
-    border-radius: 60px;
-  }
-
-  .gear.one .gear-inner {
-    animation: counter-clockwise 3s infinite linear;
-  }
-
-  .gear.two .gear-inner {
-    animation: clockwise 3s infinite linear;
-  }
-
-  .gear.three .gear-inner {
-    animation: counter-clockwise 3s infinite linear;
-  }
-
-  .gear.four .gear-inner {
-    animation: counter-clockwise 6s infinite linear;
-  }
-
-  .gear-inner .bar {
-    background: #555;
-    height: 16px;
-    width: 76px;
+  .face {
     position: absolute;
-    left: 50%;
-    margin-left: -38px;
-    top: 50%;
-    margin-top: -8px;
-    border-radius: 2px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    height: 12px;
+    width: 20px;
+    background: #000;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-40deg);
+    right: -125px;
+    top: -15px;
   }
-
-  .large .gear-inner .bar {
-    margin-left: -68px;
-    width: 136px;
+  .face:after {
+    content: "";
+    height: 12px;
+    width: 12px;
+    background: #000;
+    right: 4px;
+    top: 7px;
+    position: absolute;
+    transform: rotate(40deg);
+    transform-origin: 50% 50%;
+    border-radius: 0 0 0 2px;
   }
-
-  .gear-inner .bar:nth-child(2) {
-    transform: rotate(60deg);
+  .loader > span > span:nth-child(1),
+  .loader > span > span:nth-child(2),
+  .loader > span > span:nth-child(3),
+  .loader > span > span:nth-child(4) {
+    width: 30px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    animation: fazer1 0.2s linear infinite;
   }
-
-  .gear-inner .bar:nth-child(3) {
-    transform: rotate(120deg);
+  .loader > span > span:nth-child(2) {
+    top: 3px;
+    animation: fazer2 0.4s linear infinite;
   }
-
-  .gear-inner .bar:nth-child(4) {
-    transform: rotate(90deg);
+  .loader > span > span:nth-child(3) {
+    top: 1px;
+    animation: fazer3 0.4s linear infinite;
+    animation-delay: -1s;
   }
-
-  .gear-inner .bar:nth-child(5) {
-    transform: rotate(30deg);
+  .loader > span > span:nth-child(4) {
+    top: 4px;
+    animation: fazer4 1s linear infinite;
+    animation-delay: -1s;
   }
-
-  .gear-inner .bar:nth-child(6) {
-    transform: rotate(150deg);
+  @keyframes fazer1 {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -80px;
+      opacity: 0;
+    }
+  }
+  @keyframes fazer2 {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -100px;
+      opacity: 0;
+    }
+  }
+  @keyframes fazer3 {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -50px;
+      opacity: 0;
+    }
+  }
+  @keyframes fazer4 {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -150px;
+      opacity: 0;
+    }
+  }
+  @keyframes speeder {
+    0% {
+      transform: translate(2px, 1px) rotate(0deg);
+    }
+    10% {
+      transform: translate(-1px, -3px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(-2px, 0px) rotate(1deg);
+    }
+    30% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, 3px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-1px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-2px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(2px, 1px) rotate(0deg);
+    }
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+  }
+  .longfazers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .longfazers span {
+    position: absolute;
+    height: 2px;
+    width: 20%;
+    background: #000;
+  }
+  .longfazers span:nth-child(1) {
+    top: 20%;
+    animation: lf 0.6s linear infinite;
+    animation-delay: -5s;
+  }
+  .longfazers span:nth-child(2) {
+    top: 40%;
+    animation: lf2 0.8s linear infinite;
+    animation-delay: -1s;
+  }
+  .longfazers span:nth-child(3) {
+    top: 60%;
+    animation: lf3 0.6s linear infinite;
+  }
+  .longfazers span:nth-child(4) {
+    top: 80%;
+    animation: lf4 0.5s linear infinite;
+    animation-delay: -3s;
+  }
+  @keyframes lf {
+    0% {
+      left: 200%;
+    }
+    100% {
+      left: -200%;
+      opacity: 0;
+    }
+  }
+  @keyframes lf2 {
+    0% {
+      left: 200%;
+    }
+    100% {
+      left: -200%;
+      opacity: 0;
+    }
+  }
+  @keyframes lf3 {
+    0% {
+      left: 200%;
+    }
+    100% {
+      left: -100%;
+      opacity: 0;
+    }
+  }
+  @keyframes lf4 {
+    0% {
+      left: 200%;
+    }
+    100% {
+      left: -100%;
+      opacity: 0;
+    }
   }`;
 
 export default Loader;

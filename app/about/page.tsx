@@ -5,7 +5,7 @@ const people = [
   {
     name: "Matharishwa S",
     description:
-      "A third-year student at AMC Engineering College, Bangalore. I enjoy building practical products that solve real problems for students and developers. DevArena came from the idea that discovering hackathons shouldn’t be scattered or confusing.",
+      "I enjoy building practical products that solve real problems for students and developers. DevArena came from the idea that discovering hackathons shouldn’t be scattered or confusing.",
     social: {
       linkedin:
         "https://www.linkedin.com/in/matharishwa-s-322518325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -29,7 +29,9 @@ export default function page() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-6">
       <div className="mb-14 text-center">
-        <h1 className="text-xl font-semibold text-gray-900">About DevArena</h1>
+        <h1 className="text-xl font-semibold text-gray-900 font-[Header]">
+          About DevArena
+        </h1>
         <p className="mt-4 text-sm text-gray-600">
           Built by students who love building things.
         </p>
@@ -37,11 +39,10 @@ export default function page() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {people.map((p, index) => (
-          <div
-            key={index}
-            className="rounded-xl border border-gray-200 bg-white p-6"
-          >
-            <h2 className="text-xl font-semibold text-gray-900">{p.name}</h2>
+          <div key={index} className=" border border-gray-200 bg-white p-6">
+            <h2 className="text-xl font-semibold text-gray-900 font-[Header]">
+              {p.name}
+            </h2>
 
             <p className="mt-4 text-gray-600 text-sm leading-relaxed">
               {p.description}

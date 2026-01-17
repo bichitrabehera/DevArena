@@ -14,11 +14,11 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b  border-black/10 backdrop-blur-xl">
       <div className="mx-auto max-w-5xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-semibold text-gray-900">
+          <h1 className="text-xl font-[Header] font-semibold text-blue-600">
             <Link href="/">DevArena</Link>
           </h1>
 
-          <nav className="flex items-center gap-x-8">
+          <nav className="flex items-center gap-x-4 md:gap-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}

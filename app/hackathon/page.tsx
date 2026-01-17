@@ -25,9 +25,8 @@ type Hackathon = {
   link?: string;
 };
 
-
 const HackathonsList = () => {
-const [hackathons, setHackathons] = useState<Hackathon[]>([]);
+  const [hackathons, setHackathons] = useState<Hackathon[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [mode, setMode] = useState("all");
@@ -38,9 +37,7 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
   useEffect(() => {
     const fetchList = async () => {
       try {
-        const res = await fetch(
-          "/api/hackathons"
-        );
+        const res = await fetch("/api/hackathons");
 
         if (!res.ok) throw new Error("Failed to fetch");
 
@@ -56,9 +53,10 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
     fetchList();
   }, []);
 
-  // 🔎 FILTER LOGIC
   const filteredHackathons = useMemo(() => {
     return hackathons.filter((hackathon) => {
+      if (!hackathon.prize || hackathon.prize.trim() === "") return false;
+
       const isOnline = hackathon.location?.toLowerCase() === "online";
 
       const modeMatch =
@@ -74,17 +72,15 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
     });
   }, [hackathons, mode, city]);
 
-  // reset page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [mode, city]);
 
-  // 📄 PAGINATION
   const totalPages = Math.ceil(filteredHackathons.length / ITEMS_PER_PAGE);
 
   const paginatedHackathons = filteredHackathons.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   if (loading) {
@@ -97,28 +93,26 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
 
   return (
     <div className="mx-auto max-w-5xl py-6 px-6">
-      {/* HEADER */}
-      <h2 className="text-2xl font-semibold mb-2">Hackathons</h2>
-      <p className="text-sm text-gray-600 mb-6">
+      <h2 className="text-2xl font-semibold mb-2 font-[Header]">Hackathons</h2>
+      {/* <p className="text-sm text-gray-600 mb-6">
         Discover upcoming hackathons from platforms around the world. Filter by
         participation mode and find the right opportunity to build, compete, and
         learn.
-      </p>
+      </p> */}
 
-      {/* FILTERS */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-8">
-        <p className="text-sm text-gray-500 text-center sm:text-left">
+        <p className="text-sm text-gray-500 text sm:text-left">
           Filter hackathons by participation mode
         </p>
 
-        <div className="flex gap-2 mx-auto sm:mx-0">
+        <div className="flex mx-auto rounded  sm:mx-0 bg-gray-300">
           {["all", "online", "offline"].map((value) => (
             <button
               key={value}
               onClick={() => setMode(value)}
-              className={`px-4 py-1 text-sm rounded-2xl font-medium border border-black/20 transition ${
+              className={`px-4 py-1 text-sm font-medium transition ${
                 mode === value
-                  ? "bg-black text-white"
+                  ? " text-black border border-black/20"
                   : "bg-white text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -128,17 +122,18 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
         </div>
       </div>
 
-      {/* GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         {paginatedHackathons.map((hackathon) => (
           <HackathonCard key={hackathon.id} hackathon={hackathon} />
         ))}
 
-        {/* EMPTY STATE */}
         {paginatedHackathons.length === 0 && (
           <div className="col-span-full text-center py-12">
             <p className="text-sm text-gray-600">
               No hackathons found for the selected filters.
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Or try refreshing the page
             </p>
             <p className="text-xs text-gray-500 mt-2">
               Try switching between online and offline or clearing filters.
@@ -147,14 +142,13 @@ const [hackathons, setHackathons] = useState<Hackathon[]>([]);
         )}
       </div>
 
-      {/* PAGINATION INFO */}
       {totalPages > 1 && (
         <>
           <p className="text-xs text-gray-500 text-center mt-8">
             Showing page {currentPage} of {totalPages}
           </p>
 
-          <Pagination className="mt-4">
+          <Pagination className="mt-4 mb-20">
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious

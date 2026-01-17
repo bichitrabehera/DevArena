@@ -25,6 +25,13 @@ type Hackathon = {
   link?: string;
 };
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 const HackathonsList = () => {
   const [hackathons, setHackathons] = useState<Hackathon[]>([]);
   const [loading, setLoading] = useState(true);
@@ -152,15 +159,19 @@ const HackathonsList = () => {
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious
-                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                  onClick={() => {
+                    setCurrentPage((p) => Math.max(p - 1, 1));
+                    scrollToTop();
+                  }}
                 />
               </PaginationItem>
 
               <PaginationItem>
                 <PaginationNext
-                  onClick={() =>
-                    setCurrentPage((p) => Math.min(p + 1, totalPages))
-                  }
+                  onClick={() => {
+                    setCurrentPage((p) => Math.min(p + 1, totalPages));
+                    scrollToTop();
+                  }}
                 />
               </PaginationItem>
             </PaginationContent>

@@ -30,13 +30,13 @@ const Hero = () => {
           </div>
 
           <div className="text-center">
-            <h1 className="text-6xl font-[Header] font-bold tracking-tight text-gray-900 sm:text-7xl">
+            <h1 className="md:text-6xl text-5xl font-[Header] font-bold tracking-tight text-gray-900 sm:text-7xl">
               Find hackathons.
               <br />
               Build. Compete. Win.
             </h1>
 
-            <p className="mt-8 text-lg font-medium text-gray-600 sm:text-xl">
+            <p className="mt-8 text-sm md:text-lg text-gray-600">
               Discover global hackathons across Web, AI, Blockchain, and Open
               Source. Track deadlines, prizes, and platforms all in one place.
             </p>

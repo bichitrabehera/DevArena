@@ -28,7 +28,7 @@ const people = [
 export default function page() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-6">
-      <div className="mb-14 text-center">
+      <div className="mb-10 text-center">
         <h1 className="text-xl font-semibold text-gray-900 font-[Header]">
           About DevArena
         </h1>
@@ -39,16 +39,16 @@ export default function page() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {people.map((p, index) => (
-          <div key={index} className=" border border-gray-200 bg-white p-6">
+          <div key={index} className=" border border-gray-200 bg-white p-4">
             <h2 className="text-xl font-semibold text-gray-900 font-[Header]">
               {p.name}
             </h2>
 
-            <p className="mt-4 text-gray-600 text-sm leading-relaxed">
+            <p className="mt-1 text-gray-600 text-sm leading-relaxed">
               {p.description}
             </p>
 
-            <div className="mt-5 flex gap-4">
+            <div className="mt-3 flex gap-4">
               <a
                 href={p.social.linkedin}
                 target="_blank"

@@ -18,12 +18,12 @@ const Header = () => {
             <Link href="/">DevArena</Link>
           </h1>
 
-          <nav className="flex items-center gap-x-4 md:gap-x-8">
+          <nav className="flex font-[Header] text items-center gap-x-4 md:gap-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                className="text-sm text-gray-700 hover:text-blue-600 transition"
               >
                 {item.name}
               </Link>

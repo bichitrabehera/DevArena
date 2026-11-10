@@ -1,5 +1,13 @@
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
 type Hackathon = {
-  id: number;
+  id: string;
   name: string;
   location?: string;
   prize?: string;
@@ -18,58 +26,57 @@ const HackathonCard = ({ hackathon }: HackathonCardProps) => {
   const isOnline = hackathon.location?.toLowerCase() === "online";
 
   return (
-    <div className="group relative bg-white p-4 ring-1 ring-black/10 transition">
-      <div className="pl-3">
-        <h3 className="text-sm font-[Header] py-2 font-semibold text-gray-900 line-clamp-2">
+    <Card className="group hover:shadow-md transition-shadow duration-200 border-gray-100">
+      <CardHeader className="flex flex-row items-center justify-between space-0 pb-2">
+        <CardTitle className="text-sm font-[Header] font-semibold text-gray-900 line-clamp-1">
           {hackathon.name}
-        </h3>
-
-        <p className="mt-1 flex items-center gap-2 text-xs text-gray-500">
-          <span className="truncate">{hackathon.platform}</span>
-
-          <span className="rounded-full px-2 py-0.5 text-[10px] font-medium text-gray-700">
-            {isOnline ? (
-              <span className="bg-green-500 text-white p-1 rounded">
-                Online
-              </span>
-            ) : (
-              <span className="bg-red-500 p-1 text-white rounded">
-                Offline
-              </span>
-            )}
-          </span>
+        </CardTitle>
+        <span
+          className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
+            isOnline ? "bg-green-500 text-white" : "bg-red-500 text-white"
+          }`}
+        >
+          {isOnline ? "Online" : "Offline"}
+        </span>
+      </CardHeader>
+      <div className="pt-0 pb-2">
+        <p className="mt-1 flex items-center gap-1 text-xs text-gray-500">
+          <span className="truncate">{hackathon.platform}</span>{" "}
+          {isOnline ? "· Online" : `· ${hackathon.location ?? "N/A"}`}
         </p>
       </div>
-
-      <div className="mt-4 grid grid-cols-2 gap-3 pl-3 text-sm">
-        <div>
-          <p className="text-xs text-gray-500">Prize</p>
-          <p className="font-medium text-gray-900">{hackathon.prize}</p>
+      <CardContent className="pt-3">
+        <div className="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <p className="text-xs text-gray-500">Prize</p>
+            <p className="font-medium text-gray-900">
+              {hackathon.prize ?? "N/A"}
+            </p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500">Participants</p>
+            <p className="font-medium text-black">
+              {hackathon.participants ?? "N/A"}
+            </p>
+          </div>
         </div>
-
-        <div>
-          <p className="text-xs text-gray-500">Participants</p>
-          <p className="font-medium text-black">
-            {Number(hackathon.participants).toLocaleString()}
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-4 flex items-center justify-between pl-3">
-        <p className="text-xs text-gray-500">
-          Date : {hackathon.start_date ?? "N/A"} {hackathon.end_date}
+        <p className="mt-3 text-xs text-gray-500">
+          Date :{" "}
+          {hackathon.start_date ?? "N/A"}{" "}
+          {hackathon.end_date ? `– ${hackathon.end_date}` : ""}
         </p>
-
+      </CardContent>
+      <CardFooter className="pt-3">
         <a
-          href={hackathon.link}
+          href={hackathon.link ?? "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm bg-blue-600 rounded px-4 py-1 text-white transition hover:bg-blue-700"
+          className="w-full text-sm bg-blue-600 text-white rounded-md px-4 py-2 text-center transition hover:bg-blue-700"
         >
           View
         </a>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 };
 

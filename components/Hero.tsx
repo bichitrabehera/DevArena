@@ -1,5 +1,6 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -17,16 +18,13 @@ const Hero = () => {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-30 bg-gradient-to-tr from-indigo-500 to-cyan-500 opacity-60 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
           />
         </div>
-      
-        <div className="mx-auto max-w-2xl py-22 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-4 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Discover hackathons from top platforms{" "}
-              <a href="/hackathon" className="font-semibold text-indigo-900">
-                <span aria-hidden="true" className="absolute inset-0" />
-                Explore now <span aria-hidden="true">→</span>
-              </a>
-            </div>
+
+        <div className="mx-auto max-w-2xl py-22 sm:py-48 lg:py-56 text-center">
+          <div className="inline-flex items-center gap-1.5 rounded border border-gray-200 bg-white px-4 py-1 text-sm text-gray-600 mb-8">
+            Discover hackathons from top platforms{" "}
+            <Link href="/hackathon" className="font-semibold text-blue-600">
+              Explore now<span aria-hidden="true"> →</span>
+            </Link>
           </div>
 
           <div className="text-center">
@@ -41,14 +39,10 @@ const Hero = () => {
               Source. Track deadlines, prizes, and platforms all in one place.
             </p>
 
-            {/* CTA */}
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="/hackathon"
-                className=" bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <Button className="bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition">
                 Browse Hackathons
-              </a>
+              </Button>
             </div>
           </div>
         </div>

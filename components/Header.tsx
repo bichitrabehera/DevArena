@@ -1,24 +1,25 @@
 "use client";
-import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { GithubIcon } from "lucide-react";
 
-const Header = () => {
-  const navigation = [
-    { name: "Hackathons", href: "/hackathon" },
-    { name: "About", href: "/about" },
-    // { name: "Contact", href: "/contact" },
-  ];
+const navigation = [
+  { name: "Hackathons", href: "/hackathon" },
+  { name: "About", href: "/about" },
+];
 
+export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b  border-black/10 backdrop-blur-xl">
+    <header className="sticky top-0 z-50  backdrop-blur-xl bg-white/5">
       <div className="mx-auto max-w-5xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-[Header] font-semibold text-blue-600">
-            <Link href="/">DevArena</Link>
-          </h1>
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-xl font-[Header] font-semibold text-blue-600">
+              DevArena
+            </span>
+          </Link>
 
-          <nav className="flex font-[Header] text items-center gap-x-4 md:gap-x-8">
+          <div className="hidden md:flex items-center gap-6 font-[Header]">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -28,18 +29,9 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <a
-              href="https://github.com/bichitrabehera/DevArena.git"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubIcon className="h-5 w-5 text-gray-700 hover:text-blue-600 transition" />
-            </a>
-          </nav>
+          </div>
         </div>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
